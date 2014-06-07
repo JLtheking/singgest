@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div data-role="page" id="mapsPage">
+    
+    <div data-role="panel" id="searchResults" data-position="right" data-display="overlay">
+        <!-- panel content goes here -->
+        <ul data-role="listview" id="divResults">
+        </ul>
+    </div><!-- /panel -->
+    
+    <div role="main">
+        <!--<div id="divMain" style='width:100%;height:94vh;'></div>-->
+        <div id="map-canvas" style="width: 100%; height: 94vh;"></div>
+        
+        
+        <div data-role="footer" data-position="fixed">
+            <input type="search" name="search" id="txtSearchText" value="City Hall">
+            <a href="#searchResults" data-icon="search" class="ui-btn-right" onClick="GetSearchData();">Search</a>
+        </div>
+    </div>
+    
+        
+</div> <!-- /mapsPage -->
+
+<div data-role="page" id="postPage">
+
+    <div data-role="header" data-position="fixed">
+        <a href="" data-rel="back" data-transition="slidedown" data-icon="back" class="ui-btn-left">Back</a>
+        <h1>{Location}</h1>
+    <!--    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">-->
+    <!--        <a href="" onclick="shareFacebook()" class="ui-mini ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-notext">Share</a>-->
+    <!--        <a href="#favDialog3" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-star ui-btn-icon-notext" data-transition="pop">Favorite</a>-->
+    <!---->
+        <!--</div>-->
+    </div>
+        
+    <div role="main" class="ui-content">
+        
+        <div class="ui-bar ui-bar-a">
+            <h3>JLtheking suggested...</h3>
+        </div>
+        <div class="ui-body ui-body-a">
+            <p>I think this station could do with more bicycle stands... It's always so full! Then I cannot cycle to the MRT most of the time and instead need to walk.</p>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <button>69</button>
+                <a href="#" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-plus ui-btn-icon-notext" data-transition="pop">Favorite</a>
+            </div>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        
+        <div class="ui-body ui-body-a ui-corner-all">
+            <form>
+                <label for="textarea"><h4>Post A Comment:</h4></label>
+                <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+                
+                <br>
+                <input type="button" value="Post Comment" data-iconpos="right" data-icon="edit" data-theme="a">
+            </form>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="ui-bar ui-bar-a">
+            <h3>Polaricicle said...</h3>
+            <div style="float:right; color:orange;">
+                    <span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9733</span>
+            </div>
+        </div>
+        <div class="ui-body ui-body-a">
+            <p>Faggot</p>
+        </div>
+        <br>
+        <div class="ui-bar ui-bar-a">
+            <h3>CrumpledPaper said...</h3>
+            <div style="float:right; color:orange;">
+                    <span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9734</span><span>&#9734</span>
+            </div>
+        </div>
+        <div class="ui-body ui-body-a">
+            <p>Justin is good</p>
+        </div>
+        
+            
+    </div>
+    
+</div> <!-- postPage -->
+
+<div data-role="page" id="locationPage">
+
+    <div data-role="header" data-position="fixed">
+        <a href="#mapsPage" data-transition="slidedown" data-icon="location" class="ui-btn-left">Back to Map</a>
+        <h1>{location}</h1>
+    <!--    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">-->
+    <!--        <a href="" onclick="shareFacebook()" class="ui-mini ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-notext">Share</a>-->
+    <!--        <a href="#favDialog3" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-star ui-btn-icon-notext" data-transition="pop">Favorite</a>-->
+    <!---->
+        <!--</div>-->
+    </div>
+        
+    <div role="main" class="ui-content">
+        <!--This should be organised in descending order of upvotes-->
+        <div class="ui-bar ui-bar-a">
+            <h3>CrumpledPaper suggested...</h3>
+        </div>
+        <div class="ui-body ui-body-a">
+            <p>I think this ice cream stall needs more cheesecake.</p>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <button>6969</button>
+                <a href="#" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-plus ui-btn-icon-notext" data-transition="pop">Favorite</a>
+            </div>
+            <br>
+            <a href="#postPage" class="ui-btn ui-icon-comment ui-btn-icon-right">69 comments...</a>
+        </div>
+        
+        <br>
+        <br>
+        
+        <div class="ui-bar ui-bar-a">
+            <h3>JLtheking suggested...</h3>
+        </div>
+        <div class="ui-body ui-body-a">
+            <p>I think this station could do with more bicycle stands... It's always so full! Then I cannot cycle to the MRT most of the time and instead need to walk.</p>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <button>69</button>
+                <a href="#" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-plus ui-btn-icon-notext" data-transition="pop">Favorite</a>
+            </div>
+            <br>
+            <a href="#postPage" class="ui-btn ui-icon-comment ui-btn-icon-right">2 comments...</a>
+        </div>
+        
+        
+            
+    </div>
+    
+</div> <!-- locationPage -->
+    
+    <!--<div data-role="page" id="places">-->
+    <!--    <ul data-role="listview">-->
+    <!--        {% for post in posts %}-->
+    <!--            <li>-->
+    <!--                <a href="#q{{ post.key.id() }}">{{ post.title }}-->
+    <!--                <span id="{{ post.key.id() }}_rating" class=ui-li-count>{{ post.rating }}</span>-->
+    <!--                </a>-->
+    <!--                <a data-icon=plus onclick=upvote({{ post.key.id() }})></a>-->
+    <!--                -->
+    <!--            </li>-->
+    <!--        {% endfor %}-->
+    <!--    </ul>-->
+    <!--    <a href="#newPost">New Post</a>-->
+    <!--</div>-->
+    <!---->
+    <!--{% for post in posts %}-->
+    <!--<div data-role="page" id="q{{ post.key.id() }}">-->
+    <!--    <a data-rel=back></a>-->
+    <!--    <h1>{{ post.title }}</h1>-->
+    <!--    <div>{{ post.content }}</div>-->
+    <!--    -->
+    <!--    <button data-icon=plus onclick=upvote({{ post.key.id() }})>-->
+    <!--        <span id="{{ post.key.id() }}_rating">{{ post.rating }}</span>-->
+    <!--    </button>-->
+    <!--    -->
+    <!--    <form action="/comment" method=post>-->
+    <!--        <input type=hidden name=post_id value="{{ post.key.id() }}">-->
+    <!--        <input type=text name="content">-->
+    <!--        <input type=submit value="Comment">-->
+    <!--    </form>-->
+    <!--    {% for comment in comments %}-->
+    <!--        {{ comment.content }}-->
+    <!--    {% endfor %}-->
+    <!---->
+    <!--</div>-->
+    <!--{% endfor %}-->
+    <!---->
+    <!---->
+    <!--<div data-role="page" id="newPost">-->
+    <!--    <form action="/post" method='post'>-->
+    <!--        <label>Title</label>-->
+    <!--        <input type=text name=title>-->
+    <!--        <label>Content</label>-->
+    <!--        <input type=text name=content>-->
+    <!--        <input type=submit value="Submit">-->
+    <!--    </form>-->
+    <!--</div>-->
+                
+    <!--<div data-role="footer" data-position="fixed">-->
+    <!--        <div data-role="navbar">-->
+    <!--                <ul>-->
+    <!--                        <li><a href="#tablesPage" data-icon="grid" data-transition="none">Tables</a></li>-->
+    <!--                        <li><a href="#cameraPage" data-icon="camera" data-transition="none">Camera</a></li>-->
+    <!--                        <li><a href="#" class="ui-btn-active" data-icon="comment" data-transition="none">Reviews</a></li>-->
+    <!--                        <li><a href="#infoPage" data-icon="info" data-transition="none">Info</a></li>-->
+    <!--                        <li><a href="#foodPage" data-icon="bullets" data-transition="none">Food List</a></li>-->
+    <!--                        -->
+    <!--                </ul>-->
+    <!--        </div><!-- /navbar -->
+    <!--</div><!-- /footer -->
+
+
+<script type="text/JavaScript">
+    
+    
+    function GetSearchData() {
+        var basicSearch = new BasicSearch;
+        var searchText = '$' + document.getElementById("txtSearchText").value + '$';
+        basicSearch.searchVal = searchText;
+        basicSearch.returnGeom = '1';
+    
+        basicSearch.GetSearchResults(displayData);
+    }
+    function displayData(resultData){
+        var results = resultData.results;
+        if (results=='No results'){
+            document.getElementById('divResults').innerHTML = "No result(s) found";
+            return false;
+        }
+        else{
+            var cv = new SVY21();
+            
+            var htmlStr = "";
+            for (var i = 0; i < results.length; i++) {
+                var row = results[i];
+                var latLon = cv.computeLatLon(row.X, row.Y)
+                
+                htmlStr = htmlStr + "<li>";
+                htmlStr = htmlStr + "<a class='ui-btn ui-btn-icon-right ui-icon-carat-r' href='#locationPage'>" + row.SEARCHVAL + "</a>";
+                htmlStr = htmlStr + "</li>";
+            }
+            document.getElementById('divResults').innerHTML = htmlStr;
+        }
+    }
+     
+    //add map on body load 
+    //var OneMap = new GetOneMap('divMain','SM');   
+    //
+    //function ZoomTo(xVal,yVal){
+    //  
+    //    OneMap.showLocation(xVal,yVal);
+    //}
+    
+    
+</script>
+
+<script>
+    function upvote(id){
+        var xmlhttp;
+        //if (str=="")
+        //  {
+        //  document.getElementById("txtHint").innerHTML="";
+        //  return;
+        //  }
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+        xmlhttp.open("GET","/upvote?id="+id,true);
+        xmlhttp.send();
+    }
+</script>
+    
+<!--<form action="/post" method='post'>
+    Title: <input type=text name=title>
+    Content: <input type=text name=content>
+    <input type=submit value="Submit">
+</form>-->
+
+<!--{% for post in posts %}-->
+<!--    <div>-->
+<!--    {{ post.title }}-->
+<!--    {{ post.content }}-->
+<!--    -->
+<!--    <input type=button name=upvote onclick=upvote({{ post.key.id() }}) value=Upvote>-->
+<!--    {{ post.rating }}-->
+<!--    -->
+<!--    <form action="/comment" method=post>-->
+<!--        <input type=text name="comment">-->
+<!--        <input type=submit value="Comment">-->
+<!--    </form>-->
+<!--    -->
+<!--    {% for comment in comments %}-->
+<!--        {{ comment.content }}-->
+<!--    {% endfor %}-->
+<!--    -->
+<!--    </div>-->
+<!--{% endfor %}-->
+
+{% endblock %}
