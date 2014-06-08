@@ -18,15 +18,14 @@
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn/trunk/demos/js/modernizr-2.0.6/modernizr.min.js"></script>		
     <link rel="stylesheet" href="/static/style.css" />
-    <script type="text/javascript" src="/static/svy21.js"></script>
     <script type="text/javascript" src="/static/maps.js"></script>
   </head>
   <body>
-    <!--<div id="fb-root"></div>
+    <div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
       FB.init({
-      appId : '1441303052782667',
+      appId : '250013381861885',
       status : true, // check login status
       cookie : true, // enable cookies to allow the server to access the session
       xfbml : true // parse XFBML
@@ -47,27 +46,18 @@
         FB.ui(
         {
         method: 'feed',
-        name: 'Sit and Eat',
-        link: 'http://www.hawkerseater.appspot.com',
-        picture: 'http://www.hawkerseater.appspot.com/static/img/thumb/1.jpg',
-        caption: 'I love Sit And Eat!',
-        description: 'Awesome app that allows me to look for a nearby hawker center or food court with seats!',
-        message: 'I have found a seat at {{place}}!'
+        name: 'ComplainKing',
+        link: 'http://www.singgest.appspot.com',
+        picture: 'http://www.singgest.appspot.com/static/banner_yrs.png',
+        caption: 'I love Complain King!',
+        description: 'Awesome app that allows me to give suggestions to the government that other people can see!',
+        message: 'blablabla'
         });
       }
-    </script>-->
+    </script>
     
     
 
     {% block content %}
     {% endblock %}
-    <script>
-            channel = new goog.appengine.Channel('{{ token }}');
-            socket = channel.open();
-            socket.onopen = onOpened;
-            socket.onmessage = onMessage;
-            socket.onerror = onError;
-            socket.onclose = onClose;
-    </script>
-  </body>
 </html>

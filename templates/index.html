@@ -7,7 +7,18 @@
         <!-- panel content goes here -->
         <ul data-role="listview" id="divResults">
         </ul>
+        
     </div><!-- /panel -->
+    
+    <div data-role="header" data-position="fixed" data-fullscreen="true">
+        <img style="height:45px;"  src="/static/banner_yrs.png">
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+            <a href="#" class="ui-btn ui-corner-all">About</a>
+            <a href="#" class="ui-btn ui-corner-all">Sign In</a>
+            <a href="#" class="ui-btn ui-corner-all">Contact Us</a>
+        </div>
+        
+    </div>
     
     <div role="main">
         <!--<div id="divMain" style='width:100%;height:94vh;'></div>-->
@@ -37,6 +48,7 @@
         
     <div role="main" class="ui-content">
         
+        
         <div class="ui-bar ui-bar-a">
             <h3>JLtheking suggested...</h3>
         </div>
@@ -52,32 +64,38 @@
         <br>
         <br>
         
-        <div class="ui-body ui-body-a ui-corner-all">
-            <form>
-                <label for="textarea"><h4>Post A Comment:</h4></label>
-                <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
-                
-                <br>
-                <input type="button" value="Post Comment" data-iconpos="right" data-icon="edit" data-theme="a">
-            </form>
-        </div>
-        <br>
-        <br>
-        <br>
         <div class="ui-bar ui-bar-a">
-            <h3>Polaricicle said...</h3>
+            <h3>2 Comments</h3>
         </div>
         <div class="ui-body ui-body-a">
-            <p>Faggot</p>
+            <br>
+            <div class="ui-body ui-body-a ui-corner-all">
+                <form>
+                    <label for="textarea"><h4>Post A Comment:</h4></label>
+                    <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+                    
+                    <br>
+                    <input type="button" value="Post Comment" data-iconpos="right" data-icon="edit" data-theme="a">
+                </form>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="ui-bar ui-bar-a">
+                <h3>Polaricicle said...</h3>
+            </div>
+            <div class="ui-body ui-body-a">
+                <p>Faggot</p>
+            </div>
+            <br>
+            <div class="ui-bar ui-bar-a">
+                <h3>CrumpledPaper said...</h3>
+            </div>
+            <div class="ui-body ui-body-a">
+                <p>Justin is good</p>
+            </div>
+            <br>
         </div>
-        <br>
-        <div class="ui-bar ui-bar-a">
-            <h3>CrumpledPaper said...</h3>
-        </div>
-        <div class="ui-body ui-body-a">
-            <p>Justin is good</p>
-        </div>
-        
             
     </div>
     
@@ -88,15 +106,17 @@
     <div data-role="header" data-position="fixed">
         <a href="#mapsPage" data-transition="slidedown" data-icon="location" class="ui-btn-left">Back to Map</a>
         <h1>{location}</h1>
-    <!--    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">-->
-    <!--        <a href="" onclick="shareFacebook()" class="ui-mini ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-notext">Share</a>-->
-    <!--        <a href="#favDialog3" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-star ui-btn-icon-notext" data-transition="pop">Favorite</a>-->
-    <!---->
-        <!--</div>-->
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <a href="" onclick="shareFacebook()" class="ui-mini ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-notext">Share</a>
+                <!--<a href="#favDialog3" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-star ui-btn-icon-notext" data-transition="pop">Favorite</a>-->
+
+            </div>
     </div>
         
     <div role="main" class="ui-content">
         <!--This should be organised in descending order of upvotes-->
+        
+        
         <div class="ui-bar ui-bar-a">
             <h3>CrumpledPaper suggested...</h3>
         </div>
@@ -219,6 +239,8 @@
                 var inXYList = row.X + ',' + row.Y;
                 var inputSR = 3414;
                 var outputSR = 4326;
+                
+                console.log(row.SEARCHVAL);
                 
                 var CoordConvertorObj= new CoordConvertor();
                 CoordConvertorObj.ConvertCoordinate(inXYList,inputSR,outputSR,showVals);
