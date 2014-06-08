@@ -66,9 +66,6 @@
         <br>
         <div class="ui-bar ui-bar-a">
             <h3>Polaricicle said...</h3>
-            <div style="float:right; color:orange;">
-                    <span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9733</span>
-            </div>
         </div>
         <div class="ui-body ui-body-a">
             <p>Faggot</p>
@@ -76,9 +73,6 @@
         <br>
         <div class="ui-bar ui-bar-a">
             <h3>CrumpledPaper said...</h3>
-            <div style="float:right; color:orange;">
-                    <span>&#9733</span><span>&#9733</span><span>&#9733</span><span>&#9734</span><span>&#9734</span>
-            </div>
         </div>
         <div class="ui-body ui-body-a">
             <p>Justin is good</p>
@@ -113,7 +107,7 @@
                 <a href="#" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-plus ui-btn-icon-notext" data-transition="pop">Favorite</a>
             </div>
             <br>
-            <a href="#postPage" class="ui-btn ui-icon-comment ui-btn-icon-right">69 comments...</a>
+            <a href="#postPage" data-transition="slide" class="ui-btn ui-icon-comment ui-btn-icon-right">69 comments...</a>
         </div>
         
         <br>
@@ -129,7 +123,7 @@
                 <a href="#" data-rel="popup" class="ui-mini ui-btn ui-btn-icon-right ui-icon-plus ui-btn-icon-notext" data-transition="pop">Favorite</a>
             </div>
             <br>
-            <a href="#postPage" class="ui-btn ui-icon-comment ui-btn-icon-right">2 comments...</a>
+            <a href="#postPage" data-transition="slide" class="ui-btn ui-icon-comment ui-btn-icon-right">2 comments...</a>
         </div>
         
         
@@ -201,36 +195,44 @@
 
 
 <script type="text/JavaScript">
-    
-    
+        
     function GetSearchData() {
         var basicSearch = new BasicSearch;
         var searchText = '$' + document.getElementById("txtSearchText").value + '$';
         basicSearch.searchVal = searchText;
-        basicSearch.returnGeom = '1';
+        basicSearch.returnGeom = '0';
     
         basicSearch.GetSearchResults(displayData);
     }
     function displayData(resultData){
         var results = resultData.results;
         if (results=='No results'){
-            document.getElementById('divResults').innerHTML = "No result(s) found";
+            document.getElementById('divResults').innerHTML = "<li> <a class='ui-btn' > No result(s) found </a> </li>";
             return false;
         }
         else{
-            var cv = new SVY21();
             
             var htmlStr = "";
             for (var i = 0; i < results.length; i++) {
                 var row = results[i];
-                var latLon = cv.computeLatLon(row.X, row.Y)
+                
+                var inXYList = row.X + ',' + row.Y;
+                var inputSR = 3414;
+                var outputSR = 4326;
+                
+                var CoordConvertorObj= new CoordConvertor();
+                CoordConvertorObj.ConvertCoordinate(inXYList,inputSR,outputSR,showVals);
                 
                 htmlStr = htmlStr + "<li>";
-                htmlStr = htmlStr + "<a class='ui-btn ui-btn-icon-right ui-icon-carat-r' href='#locationPage'>" + row.SEARCHVAL + "</a>";
+                htmlStr = htmlStr + "<a data-transition='slidedown' class='ui-btn ui-btn-icon-right ui-icon-carat-r' href='#locationPage'>" + row.SEARCHVAL + "</a>";
                 htmlStr = htmlStr + "</li>";
             }
             document.getElementById('divResults').innerHTML = htmlStr;
         }
+    }
+    
+    function showVals(outXY){
+        console.log(outXY);
     }
      
     //add map on body load 
@@ -243,52 +245,4 @@
     
     
 </script>
-
-<script>
-    function upvote(id){
-        var xmlhttp;
-        //if (str=="")
-        //  {
-        //  document.getElementById("txtHint").innerHTML="";
-        //  return;
-        //  }
-        if (window.XMLHttpRequest)
-          {// code for IE7+, Firefox, Chrome, Opera, Safari
-          xmlhttp=new XMLHttpRequest();
-          }
-        else
-          {// code for IE6, IE5
-          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          }
-        xmlhttp.open("GET","/upvote?id="+id,true);
-        xmlhttp.send();
-    }
-</script>
-    
-<!--<form action="/post" method='post'>
-    Title: <input type=text name=title>
-    Content: <input type=text name=content>
-    <input type=submit value="Submit">
-</form>-->
-
-<!--{% for post in posts %}-->
-<!--    <div>-->
-<!--    {{ post.title }}-->
-<!--    {{ post.content }}-->
-<!--    -->
-<!--    <input type=button name=upvote onclick=upvote({{ post.key.id() }}) value=Upvote>-->
-<!--    {{ post.rating }}-->
-<!--    -->
-<!--    <form action="/comment" method=post>-->
-<!--        <input type=text name="comment">-->
-<!--        <input type=submit value="Comment">-->
-<!--    </form>-->
-<!--    -->
-<!--    {% for comment in comments %}-->
-<!--        {{ comment.content }}-->
-<!--    {% endfor %}-->
-<!--    -->
-<!--    </div>-->
-<!--{% endfor %}-->
-
 {% endblock %}
